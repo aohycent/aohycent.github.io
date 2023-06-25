@@ -28,17 +28,6 @@
 </svg>
         </div>
         <script>
-    let codiAddress = "codi1qaddress-"+ getUser();
-    let codiUser = localStorage[codiAddress + "user"];
-    function saveCodi(value,address){
-        localStorage[codiAddress + address]=value;
-    }
-    function getUser(){
-        if(localStorage['user']=""){
-            localStorage['user;]=prompt("Whats your nickname");
-        }
-        return localStorage['user'];
-    }
 var lare = angular.module('larena', []);
 lare.controller('larenaCtrl', function($scope) {
   $scope.title= "Larena - lagendary";
