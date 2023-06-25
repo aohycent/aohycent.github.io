@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html ng-app="larena" ng-controller="larenaCtl">
+<html>
     <head>
-        <title>{{title}}</title>
+        <title>Lagendary Arena</title>
+        <base src="https://raw.githubusercontent.com/aohycent/aohycent.github.io/main/" target="_blank">
       <meta meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="icon" href="/ohycent.png" type="image/png">
       <link href="/assets/css/larena.css" rel="stylesheet"/>
-      <script src="https://raw.githubusercontent.com/coditorlab/docs/main/script.js"></script>
+      <script src="/assets/js/jquery.js"></script>
     </head>
     <body class="h100">
         <div class="tbar">
-            <img class="pleft" src="/ohycent.png" max-width="40px"> <input type="search" class="pright avm-nav-search" name="q" placeholder="Search Here..">
+            <img class="pleft" src="/ohycent.png" width="20%">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-verified mr-2">
+    <path d="m9.585.52.929.68c.153.112.331.186.518.215l1.138.175a2.678 2.678 0 0 1 2.24 2.24l.174 1.139c.029.187.103.365.215.518l.68.928a2.677 2.677 0 0 1 0 3.17l-.68.928a1.174 1.174 0 0 0-.215.518l-.175 1.138a2.678 2.678 0 0 1-2.241 2.241l-1.138.175a1.17 1.17 0 0 0-.518.215l-.928.68a2.677 2.677 0 0 1-3.17 0l-.928-.68a1.174 1.174 0 0 0-.518-.215L3.83 14.41a2.678 2.678 0 0 1-2.24-2.24l-.175-1.138a1.17 1.17 0 0 0-.215-.518l-.68-.928a2.677 2.677 0 0 1 0-3.17l.68-.928c.112-.153.186-.331.215-.518l.175-1.14a2.678 2.678 0 0 1 2.24-2.24l1.139-.175c.187-.029.365-.103.518-.215l.928-.68a2.677 2.677 0 0 1 3.17 0ZM7.303 1.728l-.927.68a2.67 2.67 0 0 1-1.18.489l-1.137.174a1.179 1.179 0 0 0-.987.987l-.174 1.136a2.677 2.677 0 0 1-.489 1.18l-.68.928a1.18 1.18 0 0 0 0 1.394l.68.927c.256.348.424.753.489 1.18l.174 1.137c.078.509.478.909.987.987l1.136.174a2.67 2.67 0 0 1 1.18.489l.928.68c.414.305.979.305 1.394 0l.927-.68a2.67 2.67 0 0 1 1.18-.489l1.137-.174a1.18 1.18 0 0 0 .987-.987l.174-1.136a2.67 2.67 0 0 1 .489-1.18l.68-.928a1.176 1.176 0 0 0 0-1.394l-.68-.927a2.686 2.686 0 0 1-.489-1.18l-.174-1.137a1.179 1.179 0 0 0-.987-.987l-1.136-.174a2.677 2.677 0 0 1-1.18-.489l-.928-.68a1.176 1.176 0 0 0-1.394 0ZM11.28 6.78l-3.75 3.75a.75.75 0 0 1-1.06 0L4.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L7 8.94l3.22-3.22a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+            <input type="search" class="pright avm-nav-search" name="q" placeholder="Search Here..">
         </div>
         <iframe class="widget" src="data:text/html;base64,PGNhbnZhcyBpZD0iQm93b3NDYW52YXMiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIj48L2NhbnZhcz48c2NyaXB0PnZhciBjYW52YXMgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiQm93b3NDYW52YXMiKTt2YXIgY3R4ID0gY2FudmFzLmdldENvbnRleHQoIjJkIik7dmFyIHJhZGl1cyA9IGNhbnZhcy5oZWlnaHQgLyAyO3ZhciBueCA9IG5ldyBEYXRlKCk7Y3R4LnRyYW5zbGF0ZShyYWRpdXMsIHJhZGl1cyk7cmFkaXVzID0gcmFkaXVzKjAuOTAKc2V0SW50ZXJ2YWwoZHJhd0Nsb2NrLCAxMDAwKTtmdW5jdGlvbiBkcmF3Q2xvY2soKXtkcmF3RmFjZShjdHgscmFkaXVzKTtkcmF3TnVtYmVycyhjdHgscmFkaXVzKTtkcmF3VGltZShjdHgsIHJhZGl1cyk7ZHJhdzhiaXQoY3R4LCByYWRpdXMpO31mdW5jdGlvbiBkcmF3OGJpdChjdHgscmFkaXVzKXtjdHguZm9udCA9ICI2MHB4IGFyaWFsIjtjdHguc3Ryb2tlVGV4dCgnXHUyMmM4JywyLC0zMCk7Y3R4LnRleHRCYXNlbGluZT0idG9wIjtjdHguZm9udCA9ICIxNnB4IGFyaWFsIjtjdHguc3Ryb2tlVGV4dCgiQlx1MjY3ZVxXIiwyLDIwKTtjdHgudGV4dEJhc2VsaW5lPSJib3R0b20iO31mdW5jdGlvbiBkcmF3RmFjZShjdHgsIHJhZGl1cykge3ZhciBncmFkO2N0eC5iZWdpblBhdGgoKTtjdHguYXJjKDAsIDAsIHJhZGl1cywgMCwgMTEqTWF0aC5QSSk7Y3R4LmZpbGxTdHlsZSA9ICcjZjFmMWYxJztjdHguZmlsbCgpO2dyYWQgPSBjdHguY3JlYXRlUmFkaWFsR3JhZGllbnQoMCwwLHJhZGl1cyowLjk1LCAwLDAscmFkaXVzKjEuMDUpO2dyYWQuYWRkQ29sb3JTdG9wKDAsICcjMzMzJyk7Z3JhZC5hZGRDb2xvclN0b3AoMC41LCAnd2hpdGUnKTtncmFkLmFkZENvbG9yU3RvcCgxLCAnIzMzMycpO2N0eC5zdHJva2VTdHlsZSA9IGdyYWQ7Y3R4LmxpbmVXaWR0aCA9IHJhZGl1cyowLjE7Y3R4LnN0cm9rZSgpO2N0eC5iZWdpblBhdGgoKTtjdHguYXJjKDAsIDAsIHJhZGl1cyowLjEsIDAsIDIqTWF0aC5QSSk7Y3R4LmZpbGxTdHlsZSA9ICcjMzMzJztjdHguZmlsbCgpO31mdW5jdGlvbiBkcmF3TnVtYmVycyhjdHgsIHJhZGl1cykge3ZhciBhbmc7dmFyIG51bTtjdHguZm9udCA9IHJhZGl1cyowLjE1ICsgInB4IGFyaWFsIjtjdHgudGV4dEJhc2VsaW5lPSJtaWRkbGUiO2N0eC50ZXh0QWxpZ249ImNlbnRlciI7Zm9yKG51bSA9IDE7IG51bSA8IDEzOyBudW0rKyl7YW5nID0gbnVtICogTWF0aC5QSSAvIDY7Y3R4LnJvdGF0ZShhbmcpO2N0eC50cmFuc2xhdGUoMCwgLXJhZGl1cyowLjg1KTtjdHgucm90YXRlKC1hbmcpO2N0eC5maWxsVGV4dChudW0udG9TdHJpbmcoKSwgMCwgMCk7Y3R4LnJvdGF0ZShhbmcpO2N0eC50cmFuc2xhdGUoMCwgcmFkaXVzKjAuODUpO2N0eC5yb3RhdGUoLWFuZyk7fX1mdW5jdGlvbiBkcmF3VGltZShjdHgsIHJhZGl1cyl7dmFyIG5vdyA9IG5ldyBEYXRlKCk7dmFyIGhvdXIgPSBub3cuZ2V0SG91cnMoKTt2YXIgbWludXRlID0gbm93LmdldE1pbnV0ZXMoKTt2YXIgc2Vjb25kID0gbm93LmdldFNlY29uZHMoKTtob3VyPWhvdXIlMTI7aG91cj0oaG91cipNYXRoLlBJLzYpKyhtaW51dGUqTWF0aC5QSS8oNio2MCkpKyhzZWNvbmQqTWF0aC5QSS8oMzYwKjYwKSk7ZHJhd0hhbmQoY3R4LCBob3VyLCByYWRpdXMqMC41LCByYWRpdXMqMC4wNyk7bWludXRlPShtaW51dGUqTWF0aC5QSS8zMCkrKHNlY29uZCpNYXRoLlBJLygzMCo2MCkpO2RyYXdIYW5kKGN0eCwgbWludXRlLCByYWRpdXMqMC44LCByYWRpdXMqMC4wNyk7c2Vjb25kPShzZWNvbmQqTWF0aC5QSS8zMCk7ZHJhd0hhbmQoY3R4LHNlY29uZCxyYWRpdXMqMC45LCByYWRpdXMqMC4wMik7fWZ1bmN0aW9uIGRyYXdIYW5kKGN0eCwgcG9zLCBsZW5ndGgsIHdpZHRoKSB7Y3R4LmJlZ2luUGF0aCgpO2N0eC5saW5lV2lkdGggPSB3aWR0aDtjdHgubGluZUNhcD0ncm91bmQnO2N0eC5tb3ZlVG8oMCwwKTtjdHgucm90YXRlKHBvcyk7Y3R4LmxpbmVUbygwLC1sZW5ndGgpO2N0eC5zdHJva2UoKTtjdHgucm90YXRlKC1wb3MpO308L3NjcmlwdD4"></iframe>
 
         <section class="screen">
-          <div><center>Legendary Arena</center></div>      
+          <div class="avm">
+              <iframe src="https://coditorlab.github.io"></iframe>
+          </div>      
         </section>
         <div class="packet">
-          <div class="hpacket"><tt>{{larenaFooterNote}}</tt></div>
+          <div class="hpacket"><center>Legendary Arena</center></div>
           </div>
         <div class='ctl'>
-            <button id="ctlHome"></a href="/coditor">📀𝔻𝕀𝕋</a></button>
+            <button id="ctlHome"><a href="/coditor">📀𝔻𝕀𝕋</a></button>
             <button id="ctlHome"><a href="/">Home</a></button>
-            <button id="ctlHome"><a href="http://bowinc.github.io">⋈</a></button>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-verified mr-2">
-    <path d="m9.585.52.929.68c.153.112.331.186.518.215l1.138.175a2.678 2.678 0 0 1 2.24 2.24l.174 1.139c.029.187.103.365.215.518l.68.928a2.677 2.677 0 0 1 0 3.17l-.68.928a1.174 1.174 0 0 0-.215.518l-.175 1.138a2.678 2.678 0 0 1-2.241 2.241l-1.138.175a1.17 1.17 0 0 0-.518.215l-.928.68a2.677 2.677 0 0 1-3.17 0l-.928-.68a1.174 1.174 0 0 0-.518-.215L3.83 14.41a2.678 2.678 0 0 1-2.24-2.24l-.175-1.138a1.17 1.17 0 0 0-.215-.518l-.68-.928a2.677 2.677 0 0 1 0-3.17l.68-.928c.112-.153.186-.331.215-.518l.175-1.14a2.678 2.678 0 0 1 2.24-2.24l1.139-.175c.187-.029.365-.103.518-.215l.928-.68a2.677 2.677 0 0 1 3.17 0ZM7.303 1.728l-.927.68a2.67 2.67 0 0 1-1.18.489l-1.137.174a1.179 1.179 0 0 0-.987.987l-.174 1.136a2.677 2.677 0 0 1-.489 1.18l-.68.928a1.18 1.18 0 0 0 0 1.394l.68.927c.256.348.424.753.489 1.18l.174 1.137c.078.509.478.909.987.987l1.136.174a2.67 2.67 0 0 1 1.18.489l.928.68c.414.305.979.305 1.394 0l.927-.68a2.67 2.67 0 0 1 1.18-.489l1.137-.174a1.18 1.18 0 0 0 .987-.987l.174-1.136a2.67 2.67 0 0 1 .489-1.18l.68-.928a1.176 1.176 0 0 0 0-1.394l-.68-.927a2.686 2.686 0 0 1-.489-1.18l-.174-1.137a1.179 1.179 0 0 0-.987-.987l-1.136-.174a2.677 2.677 0 0 1-1.18-.489l-.928-.68a1.176 1.176 0 0 0-1.394 0ZM11.28 6.78l-3.75 3.75a.75.75 0 0 1-1.06 0L4.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L7 8.94l3.22-3.22a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
-</svg>
+            <button id="ctlHome"><a href="http://bowinc.github.io">BOW</a></button>
+        
         </div>
         <script>
 var lare = angular.module('larena', []);
