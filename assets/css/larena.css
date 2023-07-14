@@ -49,25 +49,15 @@ body::-webkit-scrollbar-thumb {
             background: linear-gradient(to left, #E0EAFC , #CFDEF3);
             font-family: 'Roboto', sans-serif;
         }
-
         .logo_icon {
-            height: 8em !important;
-            max-height: 10em;
-            width: 8em !important;
-            max-width: 10em;
-        }
-
-        .logo_icon image {
             height: 10px !important;
             max-height: 15px;
             width: 10px !important;
             max-width: 15px;
         }
-
         .avm {
             text-align: center;
         }
-        
         .avm iframe {
            border-radius: 15px;
            margin: 25px 0;
