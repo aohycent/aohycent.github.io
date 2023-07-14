@@ -57,6 +57,13 @@ body::-webkit-scrollbar-thumb {
             max-width: 10em;
         }
 
+        .logo_icon image {
+            height: 10px !important;
+            max-height: 15px;
+            width: 10px !important;
+            max-width: 15px;
+        }
+
         .avm {
             text-align: center;
         }
