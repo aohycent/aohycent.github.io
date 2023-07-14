@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE avm>
+<avm>
     <head>
-        <title>Lagendary Arena</title>
-        <base src="https://raw.githubusercontent.com/aohycent/aohycent.github.io/main/" target="_blank">
+       <title>Lagendary Arena</title>
+       <base src="https://raw.githubusercontent.com/aohycent/aohycent.github.io/main/" target="_blank">
       <meta meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="icon" href="/ohycent.png" type="image/png">
-      <link href="/assets/css/larena.css" rel="stylesheet"/>
+      <link rel="stylesheet" type="text/css" href="/assets/css/larena.css">
       <script src="/assets/js/jquery.js"></script>
     </head>
-    <body class="h100">
-        <div class="tbar">
-            <img class="logo_icon pleft" src="/ohycent.png">
-  
-            <input target="afovirtual" type="search" class="pright avm-nav-search" name="q" placeholder="Search Here..">
-        </div>
-    
-        <section class="screen">
-          <div class="avm">
-             <center><iframe src="https://coditorlab.github.io" name="afovirtual"></iframe></center>
-          </div>      
-        </section>
-        <div class="packet">
-          <div class="hpacket"><center>Legendary Arena <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-verified mr-2">
-    <path d="m9.585.52.929.68c.153.112.331.186.518.215l1.138.175a2.678 2.678 0 0 1 2.24 2.24l.174 1.139c.029.187.103.365.215.518l.68.928a2.677 2.677 0 0 1 0 3.17l-.68.928a1.174 1.174 0 0 0-.215.518l-.175 1.138a2.678 2.678 0 0 1-2.241 2.241l-1.138.175a1.17 1.17 0 0 0-.518.215l-.928.68a2.677 2.677 0 0 1-3.17 0l-.928-.68a1.174 1.174 0 0 0-.518-.215L3.83 14.41a2.678 2.678 0 0 1-2.24-2.24l-.175-1.138a1.17 1.17 0 0 0-.215-.518l-.68-.928a2.677 2.677 0 0 1 0-3.17l.68-.928c.112-.153.186-.331.215-.518l.175-1.14a2.678 2.678 0 0 1 2.24-2.24l1.139-.175c.187-.029.365-.103.518-.215l.928-.68a2.677 2.677 0 0 1 3.17 0ZM7.303 1.728l-.927.68a2.67 2.67 0 0 1-1.18.489l-1.137.174a1.179 1.179 0 0 0-.987.987l-.174 1.136a2.677 2.677 0 0 1-.489 1.18l-.68.928a1.18 1.18 0 0 0 0 1.394l.68.927c.256.348.424.753.489 1.18l.174 1.137c.078.509.478.909.987.987l1.136.174a2.67 2.67 0 0 1 1.18.489l.928.68c.414.305.979.305 1.394 0l.927-.68a2.67 2.67 0 0 1 1.18-.489l1.137-.174a1.18 1.18 0 0 0 .987-.987l.174-1.136a2.67 2.67 0 0 1 .489-1.18l.68-.928a1.176 1.176 0 0 0 0-1.394l-.68-.927a2.686 2.686 0 0 1-.489-1.18l-.174-1.137a1.179 1.179 0 0 0-.987-.987l-1.136-.174a2.677 2.677 0 0 1-1.18-.489l-.928-.68a1.176 1.176 0 0 0-1.394 0ZM11.28 6.78l-3.75 3.75a.75.75 0 0 1-1.06 0L4.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L7 8.94l3.22-3.22a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
-          </svg></center></div>
-          </div>
-        <div class='ctl'>
-            <button id="ctlHome"><a href="/coditor" target="afovirtual">🗃️</a></button>
+    <body>
+        <screen>
+            <iframe src="data:text/html;base64,PGNlbnRlcj5MZWdlbmRhcnkgQXJlbmEgPHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi12ZXJpZmllZCBtci0yIj48cGF0aCBkPSJtOS41ODUuNTIuOTI5LjY4Yy4xNTMuMTEyLjMzMS4xODYuNTE4LjIxNWwxLjEzOC4xNzVhMi42NzggMi42NzggMCAwIDEgMi4yNCAyLjI0bC4xNzQgMS4xMzljLjAyOS4xODcuMTAzLjM2NS4yMTUuNTE4bC42OC45MjhhMi42NzcgMi42NzcgMCAwIDEgMCAzLjE3bC0uNjguOTI4YTEuMTc0IDEuMTc0IDAgMCAwLS4yMTUuNTE4bC0uMTc1IDEuMTM4YTIuNjc4IDIuNjc4IDAgMCAxLTIuMjQxIDIuMjQxbC0xLjEzOC4xNzVhMS4xNyAxLjE3IDAgMCAwLS41MTguMjE1bC0uOTI4LjY4YTIuNjc3IDIuNjc3IDAgMCAxLTMuMTcgMGwtLjkyOC0uNjhhMS4xNzQgMS4xNzQgMCAwIDAtLjUxOC0uMjE1TDMuODMgMTQuNDFhMi42NzggMi42NzggMCAwIDEtMi4yNC0yLjI0bC0uMTc1LTEuMTM4YTEuMTcgMS4xNyAwIDAgMC0uMjE1LS41MThsLS42OC0uOTI4YTIuNjc3IDIuNjc3IDAgMCAxIDAtMy4xN2wuNjgtLjkyOGMuMTEyLS4xNTMuMTg2LS4zMzEuMjE1LS41MThsLjE3NS0xLjE0YTIuNjc4IDIuNjc4IDAgMCAxIDIuMjQtMi4yNGwxLjEzOS0uMTc1Yy4xODctLjAyOS4zNjUtLjEwMy41MTgtLjIxNWwuOTI4LS42OGEyLjY3NyAyLjY3NyAwIDAgMSAzLjE3IDBaTTcuMzAzIDEuNzI4bC0uOTI3LjY4YTIuNjcgMi42NyAwIDAgMS0xLjE4LjQ4OWwtMS4xMzcuMTc0YTEuMTc5IDEuMTc5IDAgMCAwLS45ODcuOTg3bC0uMTc0IDEuMTM2YTIuNjc3IDIuNjc3IDAgMCAxLS40ODkgMS4xOGwtLjY4LjkyOGExLjE4IDEuMTggMCAwIDAgMCAxLjM5NGwuNjguOTI3Yy4yNTYuMzQ4LjQyNC43NTMuNDg5IDEuMThsLjE3NCAxLjEzN2MuMDc4LjUwOS40NzguOTA5Ljk4Ny45ODdsMS4xMzYuMTc0YTIuNjcgMi42NyAwIDAgMSAxLjE4LjQ4OWwuOTI4LjY4Yy40MTQuMzA1Ljk3OS4zMDUgMS4zOTQgMGwuOTI3LS42OGEyLjY3IDIuNjcgMCAwIDEgMS4xOC0uNDg5bDEuMTM3LS4xNzRhMS4xOCAxLjE4IDAgMCAwIC45ODctLjk4N2wuMTc0LTEuMTM2YTIuNjcgMi42NyAwIDAgMSAuNDg5LTEuMThsLjY4LS45MjhhMS4xNzYgMS4xNzYgMCAwIDAgMC0xLjM5NGwtLjY4LS45MjdhMi42ODYgMi42ODYgMCAwIDEtLjQ4OS0xLjE4bC0uMTc0LTEuMTM3YTEuMTc5IDEuMTc5IDAgMCAwLS45ODctLjk4N2wtMS4xMzYtLjE3NGEyLjY3NyAyLjY3NyAwIDAgMS0xLjE4LS40ODlsLS45MjgtLjY4YTEuMTc2IDEuMTc2IDAgMCAwLTEuMzk0IDBaTTExLjI4IDYuNzhsLTMuNzUgMy43NWEuNzUuNzUgMCAwIDEtMS4wNiAwTDQuNzIgOC43OGEuNzUxLjc1MSAwIDAgMSAuMDE4LTEuMDQyLjc1MS43NTEgMCAwIDEgMS4wNDItLjAxOEw3IDguOTRsMy4yMi0zLjIyYS43NTEuNzUxIDAgMCAxIDEuMDQyLjAxOC43NTEuNzUxIDAgMCAxIC4wMTggMS4wNDJaIj48L3BhdGg+PC9zdmc+PC9jZW50ZXI+" name="afovirtual"></iframe>
+             <center class="no-drag-down-reload">
+            </center>
+        </screen>
+        <taskbar class='ctl'>
+            <button id="avmIcon"></button>
+            <button id="ctlHome"><a href="https://aohycent.github.io" target="afovirtual">🗃️</a></button>
             <button id="ctlHome"><a href="https://afocha.org" target="afovirtual">🏛️</a></button>
-            <button id="ctlHome"><a href="/geckz" target="afovirtual">🛠️</a></button>
-        
-        </div>
-        <script>
-        </script>
+            <button id="ctlHome"><a href="/geckz" target="afovirtual">🛠️</a></button>        
+        </taskbar>
     </body>
-</html>
+</avm>
