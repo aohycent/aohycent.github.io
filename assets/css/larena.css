@@ -50,6 +50,13 @@ body::-webkit-scrollbar-thumb {
             font-family: 'Roboto', sans-serif;
         }
 
+        .logo_icon {
+            height: 8em !important;
+            max-height: 10em;
+            width: 8em !important;
+            max-width: 10em;
+        }
+
         .avm {
             text-align: center;
         }
@@ -126,10 +133,6 @@ body::-webkit-scrollbar-thumb {
             max-width: 30em;
             padding: 20px;
             text-shadow: 1px 1px whitesmoke;
-        }
-        .logo_icon {
-            max-height: 30em;
-            max-width: 30em;
         }
         .tbar {
             position: sticky;
