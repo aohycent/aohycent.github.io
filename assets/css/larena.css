@@ -128,7 +128,7 @@ body::-webkit-scrollbar-thumb {
             text-shadow: 1px 1px whitesmoke;
         }
         .logo_icon {
-            height: 30%;
+            max-height: 4vm;
         }
         .tbar {
             position: sticky;
