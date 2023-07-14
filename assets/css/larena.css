@@ -50,8 +50,8 @@ body::-webkit-scrollbar-thumb {
             font-family: 'Roboto', sans-serif;
         }
         .logo_icon {
-            height: 8px !important;
-            width: 8px !important;
+            height: 15px !important;
+            width: 15px !important;
         }
         .avm {
             text-align: center;
