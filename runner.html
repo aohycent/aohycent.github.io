@@ -22,14 +22,13 @@
             }
           
              function  redeem(amount){
+         
                     receive(amount);
                  var w = document.getElementById("myWal");
                  w.innerHTML ="$ "+ ballance();
              }
               function receive(amount){
-                    var b= ballance();
-                    var tt= Math.floor(b+amount);
-                    addBallance(tt.toFixed(8));
+                    addBallance(amount.toFixed(8));
               }
              function startGame() {
                 myGamePiece=new component(30,30,"#aa4400",10,120);
@@ -151,7 +150,7 @@
             }
         </script>
         <hr>
-    
+  <button onkeydown="accelerate(-0.2)"onkeyup="accelerate(0.05)">Jump</button>
         <button onclick="accelerate(0.05)">Raise</button>
         <button onclick="accelerate(-0.2)">Fall</button>
         <button onclick="redeem(myScore.amount);">Redeem Rewards</button>
