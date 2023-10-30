@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-        <style>
+       <style>
              canvas {
                 border:1px solid #000000;
                 background-color: #000000;
@@ -14,26 +13,25 @@
             var myGamePiece;
             var myObstacles = [];
             var myScore;
-            let ballance=localStorage['airdox-wall'];
-            var myWallet={
-                redeem:function(amount){
-                    this.receive(amount);
-                },
-                receive:function(amount){
-                    let b= localStorage['airdox-wall'];
-                    let tt= Math.floor(b+amount);
-                    localStorage['airdox-wall']=tt.toFixed(8);
-                },
-                send:function(amount) {
-                    if (ballance<amount) {
-                        return;
-                    } else {
-                        let b= ballance-amount;
-                        localStorage['airdox-wall']=b.toFixed(8);
-                    }
-                }
+            function ballance(){
+                var v =localStorage['airdox-wall'];
+                return v;
             }
-            function startGame() {
+            function addBallance(v){
+                localStorage['airdox-wall']=v;
+            }
+          
+             function  redeem(amount){
+                    receive(amount);
+                 var w = document.getElementById("myWal");
+                 w.innerHTML ="$ "+ ballance();
+             }
+              function receive(amount){
+                    var b= ballance();
+                    var tt= Math.floor(b+amount);
+                    addBallance(tt.toFixed(8));
+              }
+             function startGame() {
                 myGamePiece=new component(30,30,"#aa4400",10,120);
                 myGamePiece.gravity=0;
                 myScore=new component("20px","Consolas","#00af00",280,40,"text");
@@ -154,8 +152,9 @@
         </script>
         <hr>
     
-        <button onmousedown="accelerate(-0.2)"onmouseup="accelerate(0.05)">Jump</button>
-        <button onclick="myWallet.redeem(myScore.amount);">Redeem Rewards</button>
+        <button onclick="accelerate(0.05)">Raise</button>
+        <button onclick="accelerate(-0.2)">Fall</button>
+        <button onclick="redeem(myScore.amount);">Redeem Rewards</button>
         <button onclick="window.location=window.location"id="replay">Replay</button>
         <h3 id="myWal">$0.00</h3>
     </body>
