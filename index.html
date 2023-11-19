@@ -17,7 +17,7 @@
 const {
   data: { login },
 } = await octokit.rest.users.getAuthenticated();
-alert("Hello, %s", login);
+window.alert("Hello, %s", login);
         </script>
         
     </head>
@@ -30,8 +30,8 @@ alert("Hello, %s", login);
         <taskbar class='ctl'>
             <button id="avmIcon"><a href="https://afocha.org" target="afovirtual"></a></button>
             <button id="ctlHome"><a href="https://coditorlab.github.io/" target="afovirtual">📀</a></button>
-            <button><a href="/runner.html" target="afovirtual">🎮/a></button>
-            <button id="ctlHome"><a href="data:text/html;base64,PGNlbnRlcj5MZWdlbmRhcnkgQXJlbmEgPHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi12ZXJpZmllZCBtci0yIj48cGF0aCBkPSJtOS41ODUuNTIuOTI5LjY4Yy4xNTMuMTEyLjMzMS4xODYuNTE4LjIxNWwxLjEzOC4xNzVhMi42NzggMi42NzggMCAwIDEgMi4yNCAyLjI0bC4xNzQgMS4xMzljLjAyOS4xODcuMTAzLjM2NS4yMTUuNTE4bC42OC45MjhhMi42NzcgMi42NzcgMCAwIDEgMCAzLjE3bC0uNjguOTI4YTEuMTc0IDEuMTc0IDAgMCAwLS4yMTUuNTE4bC0uMTc1IDEuMTM4YTIuNjc4IDIuNjc4IDAgMCAxLTIuMjQxIDIuMjQxbC0xLjEzOC4xNzVhMS4xNyAxLjE3IDAgMCAwLS41MTguMjE1bC0uOTI4LjY4YTIuNjc3IDIuNjc3IDAgMCAxLTMuMTcgMGwtLjkyOC0uNjhhMS4xNzQgMS4xNzQgMCAwIDAtLjUxOC0uMjE1TDMuODMgMTQuNDFhMi42NzggMi42NzggMCAwIDEtMi4yNC0yLjI0bC0uMTc1LTEuMTM4YTEuMTcgMS4xNyAwIDAgMC0uMjE1LS41MThsLS42OC0uOTI4YTIuNjc3IDIuNjc3IDAgMCAxIDAtMy4xN2wuNjgtLjkyOGMuMTEyLS4xNTMuMTg2LS4zMzEuMjE1LS41MThsLjE3NS0xLjE0YTIuNjc4IDIuNjc4IDAgMCAxIDIuMjQtMi4yNGwxLjEzOS0uMTc1Yy4xODctLjAyOS4zNjUtLjEwMy41MTgtLjIxNWwuOTI4LS42OGEyLjY3NyAyLjY3NyAwIDAgMSAzLjE3IDBaTTcuMzAzIDEuNzI4bC0uOTI3LjY4YTIuNjcgMi42NyAwIDAgMS0xLjE4LjQ4OWwtMS4xMzcuMTc0YTEuMTc5IDEuMTc5IDAgMCAwLS45ODcuOTg3bC0uMTc0IDEuMTM2YTIuNjc3IDIuNjc3IDAgMCAxLS40ODkgMS4xOGwtLjY4LjkyOGExLjE4IDEuMTggMCAwIDAgMCAxLjM5NGwuNjguOTI3Yy4yNTYuMzQ4LjQyNC43NTMuNDg5IDEuMThsLjE3NCAxLjEzN2MuMDc4LjUwOS40NzguOTA5Ljk4Ny45ODdsMS4xMzYuMTc0YTIuNjcgMi42NyAwIDAgMSAxLjE4LjQ4OWwuOTI4LjY4Yy40MTQuMzA1Ljk3OS4zMDUgMS4zOTQgMGwuOTI3LS42OGEyLjY3IDIuNjcgMCAwIDEgMS4xOC0uNDg5bDEuMTM3LS4xNzRhMS4xOCAxLjE4IDAgMCAwIC45ODctLjk4N2wuMTc0LTEuMTM2YTIuNjcgMi42NyAwIDAgMSAuNDg5LTEuMThsLjY4LS45MjhhMS4xNzYgMS4xNzYgMCAwIDAgMC0xLjM5NGwtLjY4LS45MjdhMi42ODYgMi42ODYgMCAwIDEtLjQ4OS0xLjE4bC0uMTc0LTEuMTM3YTEuMTc5IDEuMTc5IDAgMCAwLS45ODctLjk4N2wtMS4xMzYtLjE3NGEyLjY3NyAyLjY3NyAwIDAgMS0xLjE4LS40ODlsLS45MjgtLjY4YTEuMTc2IDEuMTc2IDAgMCAwLTEuMzk0IDBaTTExLjI4IDYuNzhsLTMuNzUgMy43NWEuNzUuNzUgMCAwIDEtMS4wNiAwTDQuNzIgOC43OGEuNzUxLjc1MSAwIDAgMSAuMDE4LTEuMDQyLjc1MS43NTEgMCAwIDEgMS4wNDItLjAxOEw3IDguOTRsMy4yMi0zLjIyYS43NTEuNzUxIDAgMCAxIDEuMDQyLjAxOC43NTEuNzUxIDAgMCAxIC4wMTggMS4wNDJaIj48L3BhdGg+PC9zdmc+PC9jZW50ZXI+" target="afovirtual">🏠</a></button>
+            <button id="ctlHome"><a href="/runner.html" target="afovirtual">🎮/a></button>
+            <button id="ctlHome"><a href="/" target="afovirtual">🏠</a></button>
             <button id="ctlHome"><a href="/geckz" target="afovirtual">🧰</a></button>        
         </taskbar>
     </body>
