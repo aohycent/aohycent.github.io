@@ -1,26 +1,119 @@
 <!DOCTYPE html>
-<avm>
+<html>
     <head>
-       <title>Lagendary Arena</title>
-       <!--base src="https://raw.githubusercontent.com/aohycent/aohycent.github.io/main/" target="_blank"-->
-      <meta meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="icon" href="./ohycent.png" type="image/png">
-      <link rel="stylesheet" type="text/css" href="/assets/css/larena.css">
-      <script src="./assets/js/jquery.js"></script>
-      <script src="./assets/js/module/octokit.js"></script>
+        <meta charset="UTF-8">
+        <title>AOHYCENT - Legendary Arena</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#24262b" />
+        <meta name="msapplication-TileColor" content="#24262b" />
+
+        <link rel="icon" href="/cdn/img/favicon.png" type="image/png">
+        <link rel="manifest" href="./manifest.json">
+        <link rel="stylesheet" type="text/css" href="../cdn/css/larena.css">
+        <script src="/cdn/js/bowinc-ui.js"></script>
+        <script src="/cdn/js/bowinc-web3.js"></script>
+
+        <meta name="application-name" content="larena">
+        <meta name="description" content="Legendary Arena - Distributed ledger technology researchers and software developers library">
+        <meta name="author" content="aohycent">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Larena">
+        <meta name="bow-mobile-web-app-capable" content="yes">
+        <!--twitter og-->
+        <meta name="twitter:site" content="https://aohycent.github.io">
+        <meta name="twitter:creator" content="aohycent">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Legendary Arena">
+        <meta name="twitter:description" content="Distributed ledger technology researchers and software developers library">
+        <meta name="twitter:image:src" content="/cdn/img/banner/poster-larena.png">
+        <!--facebook og-->
+        <meta property="og:url" content="https://aohycent.github.io">
+        <meta property="og:title" content="Legendary Arena">
+        <meta property="og:description" content="Distributed ledger technology researchers and software developers library">
+        <meta property="og:image" content="/cdn/img/banner/poster-larena.png">
+        <meta property="og:image:secure_url" content="/cdn/img/banner/poster.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="793">
+        <meta property="og:image:height" content="446">
     </head>
     <body>
-        <screen>
-            <iframe src="data:text/html;base64,PGNlbnRlcj5MZWdlbmRhcnkgQXJlbmEgPHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi12ZXJpZmllZCBtci0yIj48cGF0aCBkPSJtOS41ODUuNTIuOTI5LjY4Yy4xNTMuMTEyLjMzMS4xODYuNTE4LjIxNWwxLjEzOC4xNzVhMi42NzggMi42NzggMCAwIDEgMi4yNCAyLjI0bC4xNzQgMS4xMzljLjAyOS4xODcuMTAzLjM2NS4yMTUuNTE4bC42OC45MjhhMi42NzcgMi42NzcgMCAwIDEgMCAzLjE3bC0uNjguOTI4YTEuMTc0IDEuMTc0IDAgMCAwLS4yMTUuNTE4bC0uMTc1IDEuMTM4YTIuNjc4IDIuNjc4IDAgMCAxLTIuMjQxIDIuMjQxbC0xLjEzOC4xNzVhMS4xNyAxLjE3IDAgMCAwLS41MTguMjE1bC0uOTI4LjY4YTIuNjc3IDIuNjc3IDAgMCAxLTMuMTcgMGwtLjkyOC0uNjhhMS4xNzQgMS4xNzQgMCAwIDAtLjUxOC0uMjE1TDMuODMgMTQuNDFhMi42NzggMi42NzggMCAwIDEtMi4yNC0yLjI0bC0uMTc1LTEuMTM4YTEuMTcgMS4xNyAwIDAgMC0uMjE1LS41MThsLS42OC0uOTI4YTIuNjc3IDIuNjc3IDAgMCAxIDAtMy4xN2wuNjgtLjkyOGMuMTEyLS4xNTMuMTg2LS4zMzEuMjE1LS41MThsLjE3NS0xLjE0YTIuNjc4IDIuNjc4IDAgMCAxIDIuMjQtMi4yNGwxLjEzOS0uMTc1Yy4xODctLjAyOS4zNjUtLjEwMy41MTgtLjIxNWwuOTI4LS42OGEyLjY3NyAyLjY3NyAwIDAgMSAzLjE3IDBaTTcuMzAzIDEuNzI4bC0uOTI3LjY4YTIuNjcgMi42NyAwIDAgMS0xLjE4LjQ4OWwtMS4xMzcuMTc0YTEuMTc5IDEuMTc5IDAgMCAwLS45ODcuOTg3bC0uMTc0IDEuMTM2YTIuNjc3IDIuNjc3IDAgMCAxLS40ODkgMS4xOGwtLjY4LjkyOGExLjE4IDEuMTggMCAwIDAgMCAxLjM5NGwuNjguOTI3Yy4yNTYuMzQ4LjQyNC43NTMuNDg5IDEuMThsLjE3NCAxLjEzN2MuMDc4LjUwOS40NzguOTA5Ljk4Ny45ODdsMS4xMzYuMTc0YTIuNjcgMi42NyAwIDAgMSAxLjE4LjQ4OWwuOTI4LjY4Yy40MTQuMzA1Ljk3OS4zMDUgMS4zOTQgMGwuOTI3LS42OGEyLjY3IDIuNjcgMCAwIDEgMS4xOC0uNDg5bDEuMTM3LS4xNzRhMS4xOCAxLjE4IDAgMCAwIC45ODctLjk4N2wuMTc0LTEuMTM2YTIuNjcgMi42NyAwIDAgMSAuNDg5LTEuMThsLjY4LS45MjhhMS4xNzYgMS4xNzYgMCAwIDAgMC0xLjM5NGwtLjY4LS45MjdhMi42ODYgMi42ODYgMCAwIDEtLjQ4OS0xLjE4bC0uMTc0LTEuMTM3YTEuMTc5IDEuMTc5IDAgMCAwLS45ODctLjk4N2wtMS4xMzYtLjE3NGEyLjY3NyAyLjY3NyAwIDAgMS0xLjE4LS40ODlsLS45MjgtLjY4YTEuMTc2IDEuMTc2IDAgMCAwLTEuMzk0IDBaTTExLjI4IDYuNzhsLTMuNzUgMy43NWEuNzUuNzUgMCAwIDEtMS4wNiAwTDQuNzIgOC43OGEuNzUxLjc1MSAwIDAgMSAuMDE4LTEuMDQyLjc1MS43NTEgMCAwIDEgMS4wNDItLjAxOEw3IDguOTRsMy4yMi0zLjIyYS43NTEuNzUxIDAgMCAxIDEuMDQyLjAxOC43NTEuNzUxIDAgMCAxIC4wMTggMS4wNDJaIj48L3BhdGg+PC9zdmc+PC9jZW50ZXI+" name="afovirtual"></iframe>
-             <center class="no-drag-down-reload">
-             </center>
+        <nav title="Larena Navigation Bar">
+            <a href="./" class="pleft">
+                <img src="favicon.png" class="logo_icon">
+            </a>
+            <div>
+            <button onclick="">&#127967;<br>Login</button>
+            <button onclick="">&#127967;<br>Signup</button>
+            <button id="ctlF12"><a href="./" target="afovirtual">&#127917;<br>Account</a></button>          
+</div>
+        </nav>
+        <screen id="bowLarenaViewMain">
+            <iframe src="data:text/html;base64,PGNlbnRlcj5MZWdlbmRhcnkgQXJlbmEgPHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxNiIgZGF0YS12aWV3LWNvbXBvbmVudD0idHJ1ZSIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi12ZXJpZmllZCBtci0yIj48cGF0aCBzdHlsZT0iZmlsbDojMDA5OTAwIiBkPSJtOS41ODUuNTIuOTI5LjY4Yy4xNTMuMTEyLjMzMS4xODYuNTE4LjIxNWwxLjEzOC4xNzVhMi42NzggMi42NzggMCAwIDEgMi4yNCAyLjI0bC4xNzQgMS4xMzljLjAyOS4xODcuMTAzLjM2NS4yMTUuNTE4bC42OC45MjhhMi42NzcgMi42NzcgMCAwIDEgMCAzLjE3bC0uNjguOTI4YTEuMTc0IDEuMTc0IDAgMCAwLS4yMTUuNTE4bC0uMTc1IDEuMTM4YTIuNjc4IDIuNjc4IDAgMCAxLTIuMjQxIDIuMjQxbC0xLjEzOC4xNzVhMS4xNyAxLjE3IDAgMCAwLS41MTguMjE1bC0uOTI4LjY4YTIuNjc3IDIuNjc3IDAgMCAxLTMuMTcgMGwtLjkyOC0uNjhhMS4xNzQgMS4xNzQgMCAwIDAtLjUxOC0uMjE1TDMuODMgMTQuNDFhMi42NzggMi42NzggMCAwIDEtMi4yNC0yLjI0bC0uMTc1LTEuMTM4YTEuMTcgMS4xNyAwIDAgMC0uMjE1LS41MThsLS42OC0uOTI4YTIuNjc3IDIuNjc3IDAgMCAxIDAtMy4xN2wuNjgtLjkyOGMuMTEyLS4xNTMuMTg2LS4zMzEuMjE1LS41MThsLjE3NS0xLjE0YTIuNjc4IDIuNjc4IDAgMCAxIDIuMjQtMi4yNGwxLjEzOS0uMTc1Yy4xODctLjAyOS4zNjUtLjEwMy41MTgtLjIxNWwuOTI4LS42OGEyLjY3NyAyLjY3NyAwIDAgMSAzLjE3IDBaTTcuMzAzIDEuNzI4bC0uOTI3LjY4YTIuNjcgMi42NyAwIDAgMS0xLjE4LjQ4OWwtMS4xMzcuMTc0YTEuMTc5IDEuMTc5IDAgMCAwLS45ODcuOTg3bC0uMTc0IDEuMTM2YTIuNjc3IDIuNjc3IDAgMCAxLS40ODkgMS4xOGwtLjY4LjkyOGExLjE4IDEuMTggMCAwIDAgMCAxLjM5NGwuNjguOTI3Yy4yNTYuMzQ4LjQyNC43NTMuNDg5IDEuMThsLjE3NCAxLjEzN2MuMDc4LjUwOS40NzguOTA5Ljk4Ny45ODdsMS4xMzYuMTc0YTIuNjcgMi42NyAwIDAgMSAxLjE4LjQ4OWwuOTI4LjY4Yy40MTQuMzA1Ljk3OS4zMDUgMS4zOTQgMGwuOTI3LS42OGEyLjY3IDIuNjcgMCAwIDEgMS4xOC0uNDg5bDEuMTM3LS4xNzRhMS4xOCAxLjE4IDAgMCAwIC45ODctLjk4N2wuMTc0LTEuMTM2YTIuNjcgMi42NyAwIDAgMSAuNDg5LTEuMThsLjY4LS45MjhhMS4xNzYgMS4xNzYgMCAwIDAgMC0xLjM5NGwtLjY4LS45MjdhMi42ODYgMi42ODYgMCAwIDEtLjQ4OS0xLjE4bC0uMTc0LTEuMTM3YTEuMTc5IDEuMTc5IDAgMCAwLS45ODctLjk4N2wtMS4xMzYtLjE3NGEyLjY3NyAyLjY3NyAwIDAgMS0xLjE4LS40ODlsLS45MjgtLjY4YTEuMTc2IDEuMTc2IDAgMCAwLTEuMzk0IDBaTTExLjI4IDYuNzhsLTMuNzUgMy43NWEuNzUuNzUgMCAwIDEtMS4wNiAwTDQuNzIgOC43OGEuNzUxLjc1MSAwIDAgMSAuMDE4LTEuMDQyLjc1MS43NTEgMCAwIDEgMS4wNDItLjAxOEw3IDguOTRsMy4yMi0zLjIyYS43NTEuNzUxIDAgMCAxIDEuMDQyLjAxOC43NTEuNzUxIDAgMCAxIC4wMTggMS4wNDJaIj48L3BhdGg+PC9zdmc+PC9jZW50ZXI+ICAg" name="afovirtual" id="avmFrameMain"></iframe>
         </screen>
-        <taskbar class='ctl'>
-            <button id="avmIcon"><a href="https://afocha.org" target="afovirtual"></a></button>
-            <button id="ctlHome"><a href="https://coditorlab.github.io/" target="afovirtual">📀</a></button>
-            <button id="ctlHome"><a href="/runner.html" target="afovirtual">🎮/a></button>
-            <button id="ctlHome"><a href="/" target="afovirtual">🏠</a></button>
-            <button id="ctlHome"><a href="/geckz" target="afovirtual">🧰</a></button>        
+        <taskbar class="text-center">
+            <button><a href="#" target="afovirtual">&#127942;<br>Winings</a></button>
+            <button><a href="./">&#127967;<br>Home</a></button>
+            <button><a href="./games.html" target="afovirtual">&#127918;<br>Games</a></button>          
+            <button><a href="./account.html" target="afovirtual">&#127917;<br>Account</a></button>          
+            <button><a href="./chat.html" target="afovirtual">&#128173;<br>Chat</a></button>          
         </taskbar>
+        <script type="text/javascript">
+            var avm = window.avm=function(){}
+            avm.address = "1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5";
+            avm.ip = "127.0.0.1";
+            avm.port = "8332";
+            avm.dom = window.document;
+            
+            var bLViewMain = document.getElementById("bowLarenaViewMain");
+            avm.browser= document.querySelector("#avmFormSearch");
+
+            avm.localhost = "127.0.0.1";
+
+            avm.submitSearch = function(){
+                amfm = avm.dom.querySelector("#avmFrameMain");
+                ri = avm.dom.querySelector("#amItSh");
+                rii = avm.dom.querySelector("#amItShTg");
+                ra = bowinc.base58encode(avm.stringToBytes(ri.value));
+                amfm.src=ri.value;
+                ri.value=ri.value;
+                rii.value=ra;
+            };
+
+            avm.searchSubmit = function(){
+                amfm = avm.dom.querySelector("#avmFrameMain");
+                ri = avm.dom.querySelector("#amItSh");
+                rii = avm.dom.querySelector("#amItShTg");
+                ra = avm.bytesToString(bowinc.base58decode(rii.value));
+                amfm.src=ra;
+                ri.value=ra;
+                rii.value=rii.value;
+            };
+
+            avm.stringToBytes = function(str) {
+              try {
+                var bytes = Crypto.charenc.UTF8.stringToBytes(str);
+              } catch (err) {
+                var bytes = [];
+                for (var i = 0; i < str.length; ++i)
+                   bytes.push(str.charCodeAt(i));
+              }
+              return bytes;
+            }
+            avm.bytesToString=function(bytes) {
+              try {
+                var str = Crypto.charenc.UTF8.bytesToString(bytes);
+              } catch (err) {
+                var str = '';
+                for (var i = 0; i < bytes.length; ++i)
+                    str += String.fromCharCode(bytes[i]);
+              }
+              return str;
+            }
+
+            avm.getTimeStampId = function() {
+                r = new Date().getTime();
+                return r.toString(16);
+            };
+    </script>
     </body>
-</avm>
+</html>
