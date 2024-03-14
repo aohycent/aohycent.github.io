@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Air-DOX ~ NFTs</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="./assets/js/app.js"></script>
+	<script type="text/javascript" src="cb/moment.min.js"></script>
+	<script type="text/javascript" src="cb/transition.js"></script>
+	<script type="text/javascript" src="cb/collapse.js"></script>
+	<script type="text/javascript" src="cb/bootstrap.min.js"></script>
+	<script type="text/javascript" src="cb/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="cb/crypto-min.js"></script>
+	<script type="text/javascript" src="cb/crypto-sha256.js"></script>
+	<script type="text/javascript" src="cb/crypto-sha256-hmac.js"></script>
+	<script type="text/javascript" src="cb/sha512.js"></script>
+	<script type="text/javascript" src="cb/ripemd160.js"></script>
+	<script type="text/javascript" src="cb/aes.js"></script>
+	<script type="text/javascript" src="cb/jsbn.js"></script>
+	<script type="text/javascript" src="cb/ellipticcurve.js"></script>
+	<script type="text/javascript" src="cb/coin.js"></script>
+	<style type="text/css">
+		.log {
+			padding: 8px;
+			width: 95%;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<mark><b id="countdownTimer"></b></mark>
+	<h1>coind cli</h1>
+	<hr>
+	<span></span>
+	<div class="bg-black cli">
+		<form id="mnftlogs" name="mnftlogs" target="#" method="post">
+			<input type="number" id="otsxversion">
+			<input type="number" id="lastevent">
+			<input type="number" name="bestblock" id="bestblock">
+			<textarea class="log" id="logconsole" name="logconsole" width="400px" height="400px"></textarea>
+		</form>
+	</div>
+	<b id="version"></b>
+	<b id="block"></b>
+	<b id="event"></b>
+	<b id="otsxcoin"></b>
+	<script>
+	(function () {
+		var byter = window.byter = function () { };
+
+		var consl = document.getElementById("logconsole");
+    	var timer = document.getElementById("countdownTimer");
+   		var bxb = document.getElementById("bestblock");
+  		var otcx = document.getElementById("otsxcoin");
+   		var otvx = document.getElementById("otsxversion");
+   		var otbx = document.getElementById("otsxblock");
+   		var lastevent = document.getElementById("lastevent");
+   		var version = document.getElementById("version");
+		
+		byter.genesis = "000000000000000000000000000000000000000000000002030526eeba2da6f5";
+		byter.destroy = "000000000000000000000000000000000000000000000003ffffffffffffffff";
+		byter.escrow = "13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so";
+		byter.contract = "1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5";
+		byter.miner = "1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5";
+		byter.chain = 0;
+
+		byter.networks = [];
+		byter.mempool = [];
+		byter.blocks = [];
+		byter.addresses = [];
+		byter.nodes = [];
+		byter.miners = [];
+		byter.txs = [];
+
+		byter.hostname	 = ((document.location.hostname.split(".")[(document.location.hostname.split(".")).length-1]) == 'ott') ? 'byter.ott' : 'afocha.org';
+		byter.host = ('https:'==document.location.protocol?'https://':'http://')+byter.hostname+'/api/';
+
+		byter.agent = function() {
+			return {'lang': navigator.language, 'agent': navigator.userAgent, 'location': byter.onpage(), 'device': window.screen.height + 'x' + window.screen.width + ':' + window.screen.colorDepth};
+		}
+
+		byter.pad = function(str, len, ch) {
+        	pad = '';
+    	    for (var i = 0; i < len - str.length; i++) {
+    	        pad += ch;
+    	    }
+    	    return pad + str;
+    	}
+
+    	byter.hexAdd=function(a,b) {
+    		adec=byter.hex2dec(a);
+    		bdec=byter.hex2dec(b);
+    		return (adec + bdec);
+    	}
+
+    	byter.hexSub=function(a,b) {
+    		adec=byter.hex2dec(a);
+    		bdec=byter.hex2dec(b);
+    		return (adec - bdec);
+    	}
+
+		byter.guid = function() {
+			var x = window.location;
+			x += ':px-';x += (window.screen.height * window.screen.width * window.screen.colorDepth);x += '[';x += (window.screen.availHeight * window.screen.availWidth * window.screen.pixelDepth);x += ']lang-';x += navigator.language;x += ':ua-';x += navigator.userAgent;x += ':cksum-';x += x.length;
+			var r = x;
+				for(i=0;i<(x).length/25;i++){
+				r = Crypto.SHA256(r.concat(x));
+			}
+			a = r.slice(0,8);
+			b = r.slice(16,24);
+			c = r.slice(40,48);
+			d = r.slice(56,64);
+			return a+":"+ b+":"+c+":"+d;
+		}
+
+		byter.location = function() {
+			return window.location;
+		}
+
+		byter.target = function(){
+			var x =BigInteger.ZERO;
+			var i = localStorage['otc_version']?true:false;
+			if (i) {
+				var tg = localStorage['otc_version'];
+				if(tg<=byter.bestblock()){
+					localStorage['otc_version'] = BigInteger(byter.bestblock()).add(byter.hex2dec("ffffffff"));
+					x=localStorage['otc_version'];
+				}else{
+					x = localStorage['otc_version'];
+				}
+				return x;
+			}
+			if(!i){
+				localStorage['otc_version'] = BigInteger(byter.bestblock()).add(byter.hex2dec("ffffffff"));
+				x=localStorage['otc_version'];
+				return x;
+			}
+		}
+
+		byter.setVersion=function(v) {
+			var sv=BigInteger(v);
+			var i = localStorage['otc_version']?true:false;
+			if (i) {
+				var sx = localStorage['otc_version'];
+				if(sv>sx){
+					localStorage['otc_version']=sv;
+				}
+			}
+			if(!i){
+				localStorage['otc_version']=sv;
+			}
+			return true;
+		}
+		byter.bestblock = function(){
+			var i = localStorage['otc_block']?true:false;
+			var x=BigInteger.ZERO;
+			if (i) {
+				x = localStorage['otc_block'];
+			}else{
+				localStorage['otc_block']=byter.hex2dec(byter.genesis);
+				x=localStorage['otc_block'];
+			}
+			return x;
+		}
+		byter.version = function(){
+			return localStorage['otc_version'];
+		}
+		byter.nextblock = function() {
+			var x = byter.bestblock();
+			return BigInteger(x).add(BigInteger.ONE);
+		}
+		byter.events = function(){
+			var a = localStorage['otc_version'];
+			var b = byter.bestblock();
+			return BigInteger(a).subtract(BigInteger(b));
+		}
+		byter.setBlock=function(nb){
+			var i = byter.bestblock();
+			if (nb>i) {
+				localStorage['otc_block']=nb;
+				return true;
+			}
+			return false;
+		}
+
+		byter.random = function(length) {
+			var r = "";
+			var l = length || 25;
+			var chars = "[{~!@#$%^&*()_+-=}]?><.,;':\"123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+			for(x=0;x<l;x++) {
+				r += chars.charAt(Math.floor(Math.random() * 62));
+			}
+			return r;
+		}
+
+		byter.integerToBytes = function (i, len) {
+			var bytes = i.toByteArrayUnsigned();
+			if (len < bytes.length) {
+				bytes = bytes.slice(bytes.length - len);
+			} else while (len > bytes.length) {
+				bytes.unshift(0);
+			}
+			return bytes;
+		};
+
+		byter.dec2hex = function(h){
+			var i = byter.integerToBytes(h, h.length);
+			return Crypto.util.bytesToHex(i);
+		}
+
+		byter.hex2dec = function(h) {
+			return BigInteger.fromByteArrayUnsigned(Crypto.util.hexToBytes(h));
+		}
+
+		byter.address = function(){
+			return byter.escrow;
+		}
+
+		byter.chainwork = function(n){
+	    	var a = byter.dec2hex(n);
+	    	return byter.pad(a,64,0);
+	    }
+
+	    byter.mine=function(h){
+	    	var t = BigInteger(h);
+	    	var hash = byter.dec2hex(t);
+	    	var pub = coinjs.newPubkey(byter.pad(hash,64,0));
+	    	var addr = coinjs.pubkey2address(pub);
+	    	if (addr==byter.address) {
+	    		if(localStorage['otc_coin']=t){
+	    			alert("found at "+t);
+	    		}else{
+	    			alert("found at "+ t +" ! but could not save coin log!. ctl+shift+i to review.");
+	    		};
+	    	}
+	    	return {'tx':t,'address':addr,'pubkey':pub,'hash':hash};
+	    }
+
+	    byter.countdown=function(){
+	  		var t = new Date().getTime();
+	  		var countDownDate = Math.floor(t+210000);
+	
+	    	let xbow = setInterval(function() {
+	  			var now = new Date().getTime();
+	  			var distance = countDownDate - now;
+	  			var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  			var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  			var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  			var s = Math.floor((distance % (1000 * 60)) / 1000);
+	  			timer.innerHTML= "Day:"+d+" | Hour:"+h+" | Minute:"+m+" | Sec:"+s;
+	  			var g = byter.mine(byter.bestblock());
+
+	
+		  			if (g.address == byter.address) {
+		    			localStorage['otc_coin']= g.tx;
+		    			alert(g.tx);
+		    		}
+
+	
+	    		if(g.address.indexOf("13z")==0){
+		    		var tx = "{'tx':"+g.tx+",'hash':"+g.hash+",'address':"+g.address+"}";
+	
+		  			consl.prepend(tx);
+		  			consl.prepend("\n");
+		   		}
+		  			byter.setBlock(byter.nextblock());
+		   			otvx.value=localStorage['otc_version'];
+		   			otcx.innerHTML=localStorage['otc_coin'];
+		   			bxb.value = localStorage['otc_block'];
+		   			byter.setVersion(byter.target());
+		   			lastevent.value=byter.events();
+		
+		   			if (distance < 0) {
+		  				timer.innerHTML = 'Day:0|Hour:0|Minute:0|Sec:0';
+		     			document.forms['mnftlogs'].submit();
+		     			clearInterval(xbow);
+		   			}
+		   			if(byter.bestblock==byter.hex2dec(byter.destroy)){
+		   				clearInterval(xbow);
+		   				alert("completed!");
+		   			}
+	 		},-99999999);
+	    }
+	version.innerHTML=coinjs.compressed;
+    byter.countdown();
+})();
+	</script>
+	<script type="text/javascript">
+		function SubmitForm(){
+		    if(document.forms['mnftlogs'].onsubmit()){
+		        document.forms['mnftlogs'].action='index.php';
+		        document.forms['mnftlogs'].submit();
+		    }
+		    return true;
+		}
+	</script>
+</body>
+</html>
