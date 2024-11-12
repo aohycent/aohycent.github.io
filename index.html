@@ -10,6 +10,7 @@
         <link rel="icon" href="/ohycent.png" type="image/png">
         <link rel="manifest" href="/manifest.json">
         <link rel="stylesheet" type="text/css" href="/cdn/css/larena.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script src="/cdn/js/bowinc-ui.js"></script>
         <script src="/cdn/js/bowinc-web3.js"></script>
 
@@ -63,6 +64,7 @@
             <button><a href="/voicetext" target="afovirtual">&#128173;<br>vtext</a></button>          
         </taskbar>
         <script type="text/javascript">
+Telegram.WebApp.onEvent('backButtonClicked', alert);
             var avm = window.avm=function(){}
             avm.address = "1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5";
             avm.ip = "127.0.0.1";
