@@ -14,6 +14,14 @@
         <script src="/cdn/js/bowinc-ui.js"></script>
         <script src="/cdn/js/bowinc-web3.js"></script>
 
+<script>
+      window.Telegram.WebApp.expand();
+      window.Telegram.WebApp.headerColor = "#171f2a";
+      if (window.Telegram.WebApp.isVersionAtLeast("7.7")){
+        window.Telegram.WebApp.disableVerticalSwipes();
+      }
+    </script>
+
         <meta name="application-name" content="larena">
         <meta name="description" content="A Distributed ledger technology researcher's and software developer's open source projects library">
         <meta name="author" content="aohycent">
@@ -54,7 +62,7 @@
 </div>
         </nav>
         <screen id="bowLarenaViewMain">
-            <iframe src="/geck.html" name="afovirtual" id="avmFrameMain"></iframe>
+            <iframe src="/home.html" name="afovirtual" id="avmFrameMain"></iframe>
         </screen>
         <taskbar class="text-center">
             <button><a href="/bowchain" target="afovirtual">&#127942;<br>Winings</a></button>
@@ -64,7 +72,7 @@
             <button><a href="/voicetext" target="afovirtual">&#128173;<br>vtext</a></button>          
         </taskbar>
         <script type="text/javascript">
-Telegram.WebApp.onEvent('backButtonClicked', alert);
+
             var avm = window.avm=function(){}
             avm.address = "1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5";
             avm.ip = "127.0.0.1";
