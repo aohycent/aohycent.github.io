@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+  <head>
+    <title>NFTPAD</title>
+  </head>
+  <body style="background-color:linen">
+    <canvas id="canvas" style="border: double black 2px; border-radius:10px; touch-action:none; background-color: white; margin-bottom:8px">Your browser does not support canvas element.</canvas>
+    <br>
+    <button onclick="startup();">Initialize</button>&nbsp;&nbsp;
+    <button onclick="deactivate();">Deactivate</button>&nbsp;&nbsp;
+    <button onclick="editColor();">Change 🎨 Color</button>
+    <button onclick="editBrush();">Brush 🖌️ Size</button>
+    <br>
+    <button onclick="clearLog();">Clear Log</button>
+    <br>
+    Log:<pre id="log" style="border: 1px solid #ccc;"></pre>
+
+<script type="text/javascript">
+  var bit =4.49;
+var cache_address = bit*2;
+var cache_index = bit*bit;
+var BO = cache_index*bit; //Block Offset
+var block_size = cache_index*cache_index;
+var cache_size = block_size*block_size;
+var numberOfBlocks = cache_size/block_size;
+
+
+function touchIndex(touch){
+  var col = block_size*(touch.clientY-cache_address);
+  var index = Math.abs((block_size*(touch.clientY-cache_address))+(touch.clientX-cache_address));
+  height = Math.floor(index/block_size);
+  offset= Math.floor(index/BO);
+  return { id: index, era: col, block: height, bo: offset }; 
+}
+
+function startup() {
+  var el = document.getElementsByTagName("canvas")[0];
+  el.setAttribute("width",block_size);
+  el.setAttribute("height",block_size);
+  el.addEventListener("pointerdown", handleStart, false);
+  el.addEventListener("pointerup", handleEnd, false);
+  el.addEventListener("pointercancel", handleCancel, false);
+  el.addEventListener("pointermove", handleMove, false);
+  el.style.visibility="";
+} 
+
+function deactivate(){
+  var el = document.getElementsByTagName("canvas")[0];
+  el.style.visibility="hidden";
+  clearLog();
+}
+
+function clearLog(){
+  var l = document.getElementById('log');
+  l.innerHTML="";
+}
+
+var ongoingTouches = new Array(); 
+
+function handleStart(evt) {
+//  log("pd.");
+  var el = document.getElementsByTagName("canvas")[0];
+  var ctx = el.getContext("2d");
+//  log("pid = " + evt.pointerId);
+  ongoingTouches.push(copyTouch(evt));
+  var color = getColor();
+  ctx.beginPath();
+  ctx.arc(touches[i].pageX, touches[i].pageY, bit, 0,  2 * Math.PI, false);  // a circle at the start
+  ctx.arc(evt.clientX, evt.clientY, bit, 0, 2 * Math.PI, false);  // a circle at the start
+  ctx.fillStyle = color;
+  ctx.fill();
+} 
+
+function handleMove(evt) {
+  var el = document.getElementsByTagName("canvas")[0];
+  var ctx = el.getContext("2d");
+  var color = colorForTouch(evt); //getColor();
+  var brush = getBrush();
+  var idx = ongoingTouchIndexById(evt.pointerId);
+  var chain=touchIndex(evt);
+  if (idx >= 0) {
+  //  log(`continuing touch: idx =  ${chain.id} `);
+    ctx.beginPath();
+    ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+    ctx.lineTo(evt.clientX, evt.clientY);
+    ctx.lineWidth = brush;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    ongoingTouches.splice(idx, 1, copyTouch(evt));  // swap in the new touch record
+  //  log(`block: ${chain.block}, BO: ${chain.bo}, index: ${chain.id}, Era: ${chain.era}`);
+  } else {
+    //log("can't figure out which touch to continue: idx = " + idx);
+  }
+} 
+
+function handleEnd(evt) {
+//  log("pointerup");
+  var el = document.getElementsByTagName("canvas")[0];
+  var ctx = el.getContext("2d");
+  var color = colorForTouch(evt);
+  var idx = ongoingTouchIndexById(evt.pointerId);
+
+  if (idx >= 0) {
+    ctx.lineWidth = 1;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+    ctx.lineTo(evt.clientX, evt.clientY);
+    ctx.fillRect(evt.clientX - 1, evt.clientY - 1, 2, 2);  // and a square at the end
+    ongoingTouches.splice(idx, 1);  // remove it; we're done
+  } else {
+ //   log("can't figure out which touch to end");
+  }
+} 
+
+function handleCancel(evt) {
+//  log("pointercancel: id = " + evt.pointerId);
+  var idx = ongoingTouchIndexById(evt.pointerId);
+  ongoingTouches.splice(idx, 1);  // remove it; we're done
+} 
+
+function editColor(){
+  let c =prompt("Enter a color name or hex value with #....", getColor());
+  if(c!=""){
+    if(setColor(c)){
+      log(`color:  ${c}`);
+    }else{
+      log("change color failed!");
+    }
+  }else{
+    log("Color must not be empty!");
+  }
+}
+
+function setColor(color){
+  if(color!=""){
+    localStorage.setItem("nftpad:ink-color",color);
+    return true;
+  }
+  return false
+}
+
+function getColor(){
+  var color = localStorage.getItem("nftpad:ink-color")?localStorage.getItem("nftpad:ink-color"):'#000';
+  return color;
+}
+
+function editBrush(){
+  let c =prompt("Enter the size of the paint brush (integer)", getBrush());
+  if(c!=""){
+    if(setBrush(c)){
+      log(`Brush size:  ${c}px`);
+    }else{
+      log("change brush size failed!");
+    }
+  }else{
+    log("Brush must have a size!");
+  }
+}
+
+function setBrush(size){
+  if(size!=""){
+    localStorage.setItem("nftpad:brush-size",size);
+    return true;
+  }
+  return false
+}
+
+function getBrush(){
+  var bs = localStorage.getItem("nftpad:brush-size")?localStorage.getItem("nftpad:brush-size"):'#000';
+  return bs;
+}
+
+function colorForTouch(touch) {
+  touchpointerId = touchIndex(touch);
+  var r = Math.floor(touchpointerId.id % 256);
+  var g = Math.floor((touchpointerId.id / 3) % 256);
+  var b = Math.floor((touchpointerId.id / 7) % 256);
+  r = r.toString(16); // make it a hex digit
+  g = g.toString(16); // make it a hex digit
+  b = b.toString(16); // make it a hex digit
+  var color = "#" +""+ r+"" + g+"" + b;
+
+  log(`color: ${color}, X: ${touch.pageX}, Y: ${touch.pageY},  id: ${touchpointerId.id}, Era:  ${touchpointerId.era}`);
+  return color;
+}
+
+function copyTouch(touch) {
+  return { identifier: touch.pointerId, pageX: touch.clientX, pageY: touch.clientY };
+} 
+
+function ongoingTouchIndexById(idToFind) {
+  for (var i = 0; i < ongoingTouches.length; i++) {
+    var id = ongoingTouches[i].identifier;
+    
+    if (id == idToFind) {
+      return i;
+    }
+  }
+  return -1;    // not found
+} 
+
+function log(msg) {
+  var p = document.getElementById('log');
+  p.innerHTML = msg + "\n" + p.innerHTML;
+}
+</script>
+</body>
+</html>
