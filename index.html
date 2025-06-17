@@ -4,15 +4,17 @@
         <meta charset="UTF-8">
         <title>Legendary Arena ~ AOHYCENT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#24262b" />
-        <meta name="msapplication-TileColor" content="#24262b" />
+        <meta name="theme-color" content="#800080" />
+        <meta name="msapplication-TileColor" content="#800080" />
 
         <link rel="icon" href="/ohycent.png" type="image/png">
-        <link rel="manifest" href="/manifest.json">
-        <link rel="stylesheet" type="text/css" href="/cdn/css/larena.css">
+        <link rel="manifest" href="https://aohycent.github.io/manifest.json">
+        <link rel="stylesheet" type="text/css" href="https://aohycent.github.io/cdn/css/larena.css">
+
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-        <script src="/cdn/js/bowinc-ui.js"></script>
-        <script src="/cdn/js/bowinc-web3.js"></script>
+        <script src="https://aohycent.github.io/cdn/js/bowinc-ui.js"></script>
+        <script src="https://aohycent.github.io/cdn/js/bowinc-web3.js"></script>
 
 <script>
       window.Telegram.WebApp.expand();
@@ -35,12 +37,12 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Legendary Arena ~ AOHYCENT">
         <meta name="twitter:description" content="A Distributed ledger technology researcher's and software developer's open source projects q library">
-        <meta name="twitter:image:src" content="/cdn/poster-larena.jpg">
+        <meta name="twitter:image:src" content="https://aohycent.github.io/cdn/poster-larena.jpg">
         <!--facebook og-->
         <meta property="og:url" content="https://aohycent.github.io">
         <meta property="og:title" content="AOHycent - Legendary Arena">
         <meta property="og:description" content="Distributed ledger technology researchers and software developers library">
-        <meta property="og:image" content="/cdn/poster-larena.jpg">
+        <meta property="og:image" content="https://aohycent.github.io/cdn/poster-larena.jpg">
         <meta property="og:image:secure_url" content="https://aohycent.github.io/cdn/poster-larena.jpg">
         <meta property="og:image:type" content="image/jpg">
         <meta property="og:image:width" content="736">
@@ -52,9 +54,10 @@
             <a href="JavaScript: navigator.back();" class="pleft">
                 <img src="/ohycent.png" class="logo_icon">
             </a>
-<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="aovinciBot" data-size="medium" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="aovinciBot" data-size="small" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
 <script type="text/javascript">
   function onTelegramAuth(user) {
+ avm.user=user.username;
     alert(user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
   }
 </script>
@@ -62,7 +65,7 @@
 </div>
         </nav>
         <screen id="bowLarenaViewMain">
-            <iframe src="/home.html" name="afovirtual" id="avmFrameMain"></iframe>
+            <iframe src="editor.html" name="afovirtual" id="avmFrameMain"></iframe>
         </screen>
         <taskbar class="text-center">
             <button><a href="/bowchain" target="afovirtual">&#127942;<br>Winings</a></button>
