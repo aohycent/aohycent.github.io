@@ -24,10 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const projects= await fetch("project.noj", function (e){
-  return e.result;
-});
+const projects={};
 const projectview=document.querySelector(".projects-grids");
+
+fetch('./project.noj')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(data => {
+    projects=data;
+  })
+  .catch(error => {
+    console.error('Error fetching the file:', error);
+  });
+
 function loadprojects(){
    for(bar p in projects){
         var pc = document.createElement("div");
@@ -36,4 +49,5 @@ function loadprojects(){
         projectview.appendChild(pc);
     }
 }
+
 setTimeout(loadprojects,5000);
