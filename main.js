@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const projects=[];
-const projectview = document.querySelector(".projects-grids")[0];
+const projectview = document.querySelector('.projects-grids');
 
 function make_request(u, f, m, param){
 	var x = false;
