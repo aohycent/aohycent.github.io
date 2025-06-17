@@ -38,8 +38,7 @@ function make_request(u, f, m, param){
 }
 
 function loadprojects(projs){
-   projects.push(projs);
-   for(var p in projects){
+   for(var p in projs){
         var pc = document.createElement("div");
         pc.addAttribute("class", "project-card");
         pc.innerHTML= "<p>"+ p.name +"</p>";
