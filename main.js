@@ -24,30 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const projects={};
-const projectview=document.querySelector(".projects-grids");
+const projects=[];
+const projectview = document.querySelector(".projects-grids")[0];
 
-fetch('./project.noj')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(data => {
-    projects=data;
-  })
-  .catch(error => {
-    console.error('Error fetching the file:', error);
-  });
+function make_request(u, f, m, param){
+	var x = false;
+	try{ x = new ActiveXObject('Msxml2.XMLHTTP')} catch(e) { try { x = new ActiveXObject('Microsoft.XMLHTTP')} catch(e) { x = new XMLHttpRequest() }}
+	if(x==false) { return false;}
+	x.open(m, u, true);
+	x.onreadystatechange=function(){ if((x.readyState==4) && f){ f(x.responseText);}};
+	if(m == 'POST'){ x.setRequestHeader('Content-type','application/x-www-form-urlencoded');}
+	x.send(param);
+}
 
 function loadprojects(){
-   for(bar p in projects){
+    projects = make_request("./projects.noj",console.log,'GET');
+   for(var p in projects){
         var pc = document.createElement("div");
         pc.addAttribute("class", "project-card");
         pc.innerHTML= "<p>"+ p.name +"</p>";
         projectview.appendChild(pc);
     }
 }
+loadprojects();
 
 setTimeout(loadprojects,5000);
