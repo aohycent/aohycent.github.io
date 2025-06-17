@@ -37,8 +37,8 @@ function make_request(u, f, m, param){
 	x.send(param);
 }
 
-function loadprojects(){
-    projects = make_request("./projects.noj",console.log,'GET');
+function loadprojects(projs){
+   projects.push(projs);
    for(var p in projects){
         var pc = document.createElement("div");
         pc.addAttribute("class", "project-card");
@@ -46,6 +46,4 @@ function loadprojects(){
         projectview.appendChild(pc);
     }
 }
-loadprojects();
-
-setTimeout(loadprojects,5000);
+make_request("./projects.noj",loadprojects,'GET');
