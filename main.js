@@ -40,7 +40,7 @@ function make_request(u, f, m, param){
 function loadprojects(projs){
    for(var p in projs){
         var pc = document.createElement("div");
-        pc.addAttribute("class", "project-card");
+        pc.setAttribute("class", "project-card");
         pc.innerHTML= "<p>"+ p.name +"</p>";
         projectview.appendChild(pc);
     }
