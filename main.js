@@ -23,3 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+const projects= await fetch("project.noj", function (e){
+  return e.result;
+});
+const projectview=document.querySelector(".projects-grids");
+function loadprojects(){
+   for(bar p in projects){
+        var pc = document.createElement("div");
+        pc.addAttribute("class", "project-card");
+        pc.innerHTML= "<p>"+ p.name +"</p>";
+        projectview.appendChild(pc);
+    }
+}
+setTimeout(loadprojects,5000);
