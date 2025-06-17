@@ -61,9 +61,9 @@ nav ul {
 nav li {margin: 0px; padding: 0px;}
 
 dl {display: flex; flex-wrap: wrap;}
-dt, dd {padding: 2%; box-sizing: border-box;}
+dt, dd {padding: 2%; box-sizing: border-box;overflow-wrap: no-breack; overflow: scroll-x;}
 dt {width: 30%; font-weight: bold; text-align: right;}
-dd {width: 66%; margin: 0px;}
+dd {width: 66%; margin: 0px;font-size:1em}
 
 code {
 	background-color: var(--lightYellow);
