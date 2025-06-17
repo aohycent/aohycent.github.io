@@ -79,6 +79,14 @@ function make_request(u, f, m, param){
 function loadprojects(){
    var ps = uprag.projects;
    for(var p in ps){
+	   // load image
+
+	   //load title
+
+	   // add description
+
+	   //add links
+	   //add project element
 	   for(var l in p.link){
 		   
 	   }
