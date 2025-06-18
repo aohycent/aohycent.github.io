@@ -104,7 +104,7 @@ function buildElement(dom){
 	for(var c=0;c<dom['attr'].length;c++){
 		e.setAttribute(dom['attr'][c]['name'],dom['attr'][c]['value']);
 	}
-	e.innHtml=dom['body'];
+	e.innerHtml=dom['body'];
 	return e;
 }
 loadprojects();
