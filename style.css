@@ -255,7 +255,7 @@ nav ul li a:hover {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
@@ -271,7 +271,7 @@ nav ul li a:hover {
 }
 .project-card img {
     width: 100%;
-    height: auto;
+    max-height: 2em;
     display: block;
 }
 
