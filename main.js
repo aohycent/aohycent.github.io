@@ -26,17 +26,6 @@
 	];
 })();
 
-translations: {
-			"en": {
-				// javascript alerts or messages
-				"testrunneractivated": "TESTRUNNER ACTIVATED",
-
-				// header and menu html
-				"indexdomtitle": "Home Page",
-				"walletdomdetail": "HClab Wallet"
-			}
-		}
-
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
