@@ -3,8 +3,8 @@
       	uprag.projects =[
 		{
 			'title':'BOWINC',
-			'description':'Decentralized voting system. aimed to address the issues of voter fraud and low voter turnout by leveraging the security and transparency of blockchain technology.',,
-			'img':'https://aohycent.github.io/cdn/img/bowinc.header.png'
+			'description':'Decentralized voting system. aimed to address the issues of voter fraud and low voter turnout by leveraging the security and transparency of blockchain technology.',
+			'img':'https://aohycent.github.io/cdn/img/bowinc.header.png',
 			'links':[
 				{
 					'name':'a',
