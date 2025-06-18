@@ -69,7 +69,8 @@ function loadprojects(){
    var ps = uprag.projects;
    for(var p in ps){
 	   //create project element
-	   var probj=document.createElement("div").setAttribute("class","project-card");
+	   const probj = document.createElement("div");
+	   probj.setAttribute("class","project-card");
 	   // load image
 	   var img = document.createElement("img").setAttribute("src",p.img);
 	   probj.appendChild(img);
