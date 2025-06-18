@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const projects=[];
-const projectview = document.querySelector('.projects-grids');
+const projectview = document.querySelector('.projects-grid');
 
 function make_request(u, f, m, param){
 	var x = false;
