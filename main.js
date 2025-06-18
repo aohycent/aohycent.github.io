@@ -22,6 +22,28 @@
 					'body': '<i class="fab fa-btc"></i> Donate'
 				}
 			]
+		},
+		{
+			'title':'BOWALLET',
+			'description':'BOWCHAIN NATIVE WALLET',
+			'img':'https://aohycent.github.io/cdn/img/bowinc.favicon.png',
+			'links':[
+				{
+					'name':'a',
+					'attr':[{'name':'href','value':'https://github.com/bowinc'},{'name':'target','value':'_blank'}],
+					'body': '<i class="fab fa-github"></i> GitHub'
+				},
+				{
+					'name':'a',
+					'attr':[{'name':'href','value':'pi:bowinc.github.io'},{'name':'target','value':'_blank'},{'name':'class', 'value':'picoin'}],
+					'body': 'BOW<i class="fas fa-cube"></i>Dapp'
+				},
+				{
+					'name':'a',
+					'attr':[{'name':'href','value':'bitcoin:1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5'},{'name':'target','value':'_blank'},{'name':'class', 'value':'bitcoin'}],
+					'body': '<i class="fab fa-btc"></i> Donate'
+				}
+			]
 		}
 	];
 })();
@@ -98,8 +120,13 @@ function loadprojects(){
 	   //add links
 	   const plink = document.createElement("div");
 	   plink.setAttribute("class","project-links");
-	   for(var l=0;l<p.links.lenght; l++){
-		   plink.appendChild(buildElement(p.links[l]));
+	   for(var l=0;l < p.links.lenght; l++){
+		   const e= document.createElement(p.links[l].name);
+		   for(var c=0; c < p.links[l].attr.length;c++){
+			e.setAttribute(p.links[l].attr[c].name, p.links[l].attr[c].value);
+		   }
+		   e.innerHTML = p.links[l].body;
+		   plink.appendChild(e);
 	   }
 	   probj.appendChild(plink);
 
