@@ -271,7 +271,7 @@ nav ul li a:hover {
 }
 .project-card img {
     width: 100%;
-    max-height: 2em;
+    max-height: 50%;
     display: block;
 }
 
