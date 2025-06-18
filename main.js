@@ -68,28 +68,29 @@ function make_request(u, f, m, param){
 function loadprojects(){
    var ps = uprag.projects;
    for(var i = 0; i < ps.length; i++){
+	   p=ps[i];
 	   //create project element
 	   const probj = document.createElement("div");
 	   probj.setAttribute("class","project-card");
 	   // load image
 	   const pimg = document.createElement("img");
-	   pimg.setAttribute("src",ps[i]['img']);
+	   pimg.setAttribute("src",p.img);
 	   probj.appendChild(pimg);
 	   //load title
 	   const pname=document.createElement("h3");
-	   pname.innerHTML=ps[i]['title'];
+	   pname.innerHTML=p.title;
 	   probj.appendChild(pname);
 
 	   // add description
 	   const pdesc=document.createElement("p");
-	   pdesc.innerHTML=ps[i]['description'];
+	   pdesc.innerHTML=p.description;
 	   probj.appendChild(pdesc);
 
 	   //add links
 	   const plink = document.createElement("div");
 	   plink.setAttribute("class","project-links");
-	   for(var l=0;l<probj['links'].lenght; l++){
-		   const lem=buildElement(probj['links'][l]);
+	   for(var l=0;l<p.links.lenght; l++){
+		   const lem=buildElement(p.links[l]);
 		   plink.appendChild(lem);
 	   }
 	   probj.appendChild(plink);
