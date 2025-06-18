@@ -65,6 +65,15 @@ function make_request(u, f, m, param){
 	x.send(param);
 }
 
+function buildElement(dom){
+	const e= document.createElement(dom.name);
+	for(var c=0;c<dom.attr.length;c++){
+		e.setAttribute(dom.attr[c].name, dom.attr[c].value);
+	}
+	e.innerHTML=dom.body;
+	return e;
+}
+
 function loadprojects(){
    var ps = uprag.projects;
    for(var i = 0; i < ps.length; i++){
@@ -90,8 +99,7 @@ function loadprojects(){
 	   const plink = document.createElement("div");
 	   plink.setAttribute("class","project-links");
 	   for(var l=0;l<p.links.lenght; l++){
-		   const lem=buildElement(p.links[l]);
-		   plink.appendChild(lem);
+		   plink.appendChild(buildElement(p.links[l]));
 	   }
 	   probj.appendChild(plink);
 
@@ -99,12 +107,5 @@ function loadprojects(){
 	   projectview.appendChild(probj);
     }
 }
-function buildElement(dom){
-	const e=document.createElement(dom['name']);
-	for(var c=0;c<dom['attr'].length;c++){
-		e.setAttribute(dom['attr'][c]['name'],dom['attr'][c]['value']);
-	}
-	e.innerHtml=dom['body'];
-	return e;
-}
+
 loadprojects();
