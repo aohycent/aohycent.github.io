@@ -79,22 +79,31 @@ function make_request(u, f, m, param){
 function loadprojects(){
    var ps = uprag.projects;
    for(var p in ps){
+	   //create project element
+	   var probj=document.createElement("div").setAttribute("class","project-card");
 	   // load image
-
+	   var img = document.createElement("img").setAttribute("src",p.img);
+	   probj.appendChild(img);
 	   //load title
+	   var pname=document.createElement("h3");
+	   pname.innerHTML=p.title;
+	   probj.appendChild(pname);
 
 	   // add description
+	   var pdesc=document.createElement("p");
+	   pdesc.innerHTML=p.description;
+	   probj.appendChild(pdesc);
 
 	   //add links
-	   //add project element
-	   for(var l in p.link){
-		   
+	   var plink = document.createElement("div").setAttribute("class","project-links");
+	   for(var l in probj.links){
+		   var lem=buildElement(l);
+		   plink.appendChild(lem);
 	   }
-	var elem = buildElement(p.link);
-        var pc = document.createElement("div");
-        pc.setAttribute("class", "project-card");
-        pc.innerHTML= "<p>"+ p.name +"</p>";
-        projectview.appendChild(pc);
+	   probj.appendChild(plink);
+
+	   //add project element
+	   projectview.appendChild(probj);
     }
 }
 function buildElement(dom){
@@ -105,4 +114,4 @@ function buildElement(dom){
 	e.innHtml=dom.body;
 	return e;
 }
-make_request("./projects.noj",loadprojects,'GET');
+loadprojects();
