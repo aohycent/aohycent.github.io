@@ -67,29 +67,29 @@ function make_request(u, f, m, param){
 
 function loadprojects(){
    var ps = uprag.projects;
-   for(var p in ps){
+   for(i = 0; i < ps.length; i++){
 	   //create project element
 	   const probj = document.createElement("div");
 	   probj.setAttribute("class","project-card");
 	   // load image
 	   const pimg = document.createElement("img");
-	   pimg.setAttribute("src",p.img);
+	   pimg.setAttribute("src",p['img']);
 	   probj.appendChild(pimg);
 	   //load title
 	   const pname=document.createElement("h3");
-	   pname.innerHTML=p.title;
+	   pname.innerHTML=p['title'];
 	   probj.appendChild(pname);
 
 	   // add description
 	   const pdesc=document.createElement("p");
-	   pdesc.innerHTML=p.description;
+	   pdesc.innerHTML=p['description'];
 	   probj.appendChild(pdesc);
 
 	   //add links
 	   const plink = document.createElement("div");
 	   plink.setAttribute("class","project-links");
-	   for(var l in probj.links){
-		   const lem=buildElement(l);
+	   for(var l=0;l<probj.links.lenght; l++){
+		   const lem=buildElement(probj.links[l]);
 		   plink.appendChild(lem);
 	   }
 	   probj.appendChild(plink);
@@ -99,9 +99,9 @@ function loadprojects(){
     }
 }
 function buildElement(dom){
-	const e=document.createElement(dom.name);
-	for(var c in dom.attr){
-		e.setAttribute(c.name,c.value);
+	const e=document.createElement(dom['name']);
+	for(var c=0;c<dom.attr.length;c++){
+		e.setAttribute(dom.attr['name'],dom.attr['value']);
 	}
 	e.innHtml=dom.body;
 	return e;
