@@ -1,5 +1,5 @@
 (function () {
-	var uprag = window.coinjs = function () { };
+	var uprag = window.uprag = function () { };
       	uprag.projects =[
 		{
 			'title':'BOWINC',
