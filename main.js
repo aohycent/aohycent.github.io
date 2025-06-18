@@ -72,22 +72,24 @@ function loadprojects(){
 	   const probj = document.createElement("div");
 	   probj.setAttribute("class","project-card");
 	   // load image
-	   var img = document.createElement("img").setAttribute("src",p.img);
-	   probj.appendChild(img);
+	   const pimg = document.createElement("img");
+	   pimg.setAttribute("src",p.img);
+	   probj.appendChild(pimg);
 	   //load title
-	   var pname=document.createElement("h3");
+	   const pname=document.createElement("h3");
 	   pname.innerHTML=p.title;
 	   probj.appendChild(pname);
 
 	   // add description
-	   var pdesc=document.createElement("p");
+	   const pdesc=document.createElement("p");
 	   pdesc.innerHTML=p.description;
 	   probj.appendChild(pdesc);
 
 	   //add links
-	   var plink = document.createElement("div").setAttribute("class","project-links");
+	   const plink = document.createElement("div");
+	   plink.setAttribute("class","project-links");
 	   for(var l in probj.links){
-		   var lem=buildElement(l);
+		   const lem=buildElement(l);
 		   plink.appendChild(lem);
 	   }
 	   probj.appendChild(plink);
@@ -97,7 +99,7 @@ function loadprojects(){
     }
 }
 function buildElement(dom){
-	var e=document.createElement(dom.name);
+	const e=document.createElement(dom.name);
 	for(var c in dom.attr){
 		e.setAttribute(c.name,c.value);
 	}
