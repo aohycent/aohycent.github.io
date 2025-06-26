@@ -40,7 +40,7 @@
 				},
 				{
 					'name':'a',
-					'attr':[{'name':'href','value':'bitcoin:1GECKZ9EjG7txbNhzYfGwPNLwWAUgvALF5'},{'name':'target','value':'_blank'},{'name':'class', 'value':'bitcoin'}],
+					'attr':[{'name':'href','value':'#'},{'name':'target','value':'_blank'},{'name':'class', 'value':'bitcoin'}],
 					'body': '<i class="fab fa-btc"></i> Donate'
 				}
 			]
@@ -92,7 +92,8 @@ function buildElement(dom){
 	for(var c=0;c<dom.attr.length;c++){
 		e.setAttribute(dom.attr[c].name, dom.attr[c].value);
 	}
-	e.innerHTML=dom.body;
+	var ev=document.createTextNode(dom.body);
+e.appendChild(ev);
 	return e;
 }
 
@@ -120,12 +121,13 @@ function loadprojects(){
 	   //add links
 	   const plink = document.createElement("div");
 	   plink.setAttribute("class","project-links");
+var e,ei;
 	   for(var l=0;l < p.links.lenght; l++){
-		   const e= document.createElement(p.links[l].name);
+		   e= document.createElement(p.links[l].name);
 		   for(var c=0; c < p.links[l].attr.length;c++){
 			e.setAttribute(p.links[l].attr[c].name, p.links[l].attr[c].value);
 		   }
-		   var ei = document.createTextNode(p.links[l].body);
+		   ei = document.createTextNode(p.links[l].body);
  e.appendChild(ei);
 		   plink.appendChild(e);
 	   }
