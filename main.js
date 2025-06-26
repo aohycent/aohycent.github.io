@@ -125,7 +125,8 @@ function loadprojects(){
 		   for(var c=0; c < p.links[l].attr.length;c++){
 			e.setAttribute(p.links[l].attr[c].name, p.links[l].attr[c].value);
 		   }
-		   e.innerHTML = p.links[l].body;
+		   var ei = document.createTextNode(p.links[l].body);
+ e.appendChild(ei);
 		   plink.appendChild(e);
 	   }
 	   probj.appendChild(plink);
