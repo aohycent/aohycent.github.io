@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board Setup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .error-message {
+            color: #ef4444;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Chess Board Initial Setup</h1>
+        <p class="text-gray-700 mb-6">Click the button below to generate an image showing the initial arrangement of chess pieces on the board.</p>
+        <button id="generateImageBtn">Generate Image</button>
+        <div id="loading" class="loading-spinner hidden"></div>
+        <div id="imageContainer"></div>
+        <p id="errorMessage" class="error-message hidden"></p>
+    </div>
+
+    <script type="module">
+        const generateImageBtn = document.getElementById('generateImageBtn');
+        const loadingSpinner = document.getElementById('loading');
+        const imageContainer = document.getElementById('imageContainer');
+        const errorMessage = document.getElementById('errorMessage');
+
+        generateImageBtn.addEventListener('click', async () => {
+            imageContainer.innerHTML = '';
+            errorMessage.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            generateImageBtn.disabled = true;
+
+            const prompt = "initial arrangement of chess pieces on a standard 8x8 chessboard, with white pieces at the bottom and black pieces at the top. The pieces should be clearly distinguishable.";
+            let retries = 0;
+            const maxRetries = 3;
+            let success = false;
+
+            while (retries < maxRetries && !success) {
+                try {
+                    const payload = { instances: { prompt: prompt }, parameters: { "sampleCount": 1 } };
+                    const apiKey = ""; // Canvas will provide this API key at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                        const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                        const imgElement = document.createElement('img');
+                        imgElement.src = imageUrl;
+                        imgElement.alt = "Initial chess board setup";
+                        imageContainer.appendChild(imgElement);
+                        success = true;
+                    } else {
+                        throw new Error('Image data not found in response.');
+                    }
+                } catch (error) {
+                    console.error('Error generating image:', error);
+                    retries++;
+                    if (retries < maxRetries) {
+                        await new Promise(res => setTimeout(res, Math.pow(2, retries) * 1000)); // Exponential backoff
+                    } else {
+                        errorMessage.textContent = 'Failed to generate image after multiple retries. Please try again later.';
+                        errorMessage.classList.remove('hidden');
+                    }
+                } finally {
+                    if (success || retries === maxRetries) {
+                        loadingSpinner.classList.add('hidden');
+                        generateImageBtn.disabled = false;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
