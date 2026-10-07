@@ -15,7 +15,7 @@ export const Brand = {
 		},{
 			attr:[{key:"name",value:"viewport"},{key:"content",value:"width=device-width, initial-scale=1"}]
 		},{
-			attr:[{key:"name",value:"theme-color"},{key:"content",value:"#4d004d"}]
+			attr:[{key:"name",value:"theme-color"},{key:"content",value:"#260026"}]
 		},{
 			attr:[{key:"name",value:"description"},{key:"content",value:"AOHYCENT Integrated Technologies — digital systems, electrical & electronics engineering, renewable energy and automotive technology solutions."}]
 		}
