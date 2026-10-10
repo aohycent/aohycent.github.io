@@ -1,6 +1,6 @@
 export const Brand = {
-	name:"AOHYCENT Integrated Technologies",
-	description:"",
+	name:"Coded Hycent Integrated Technologies",
+	description:"Programming, electrical &amp; electronics engineering, renewable energy and automotive technology solutions.",
 	tagline:"Ideas • Technology • Real Solutions",
 	logo:"assets/logo.png",
 	emblem:"assets/favicon.gif",
@@ -17,7 +17,7 @@ export const Brand = {
 		},{
 			attr:[{key:"name",value:"theme-color"},{key:"content",value:"#260026"}]
 		},{
-			attr:[{key:"name",value:"description"},{key:"content",value:"AOHYCENT Integrated Technologies — digital systems, electrical & electronics engineering, renewable energy and automotive technology solutions."}]
+			attr:[{key:"name",value:"description"},{key:"content",value:"Programming, electrical &amp; electronics engineering, renewable energy and automotive technology solutions."}]
 		}
 	],
 	sectors:[
